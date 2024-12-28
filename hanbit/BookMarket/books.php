@@ -18,20 +18,21 @@
                     <p class="col-md-8 fs-4">BookList</p>
                 </div>
             </div>
-        <div class="row align-items-md-stretch text-center">
-        <?php
+            <div class="row align-items-md-stretch text-center">
+            <?php
             $listOfBooks = getAllBooks();
             for($i=0; $i<count($listOfBooks); $i++) {
                 $id = key($listOfBooks);
                 $book = $listOfBooks[$id];
                 next($listOfBooks);
-        ?>
+            ?>
             <div class="col-md-4">
                 <div class="h-100 p-5">
-                    <h2><? echo $book["name"]; ?></h2>
-                    <p><?php echo $book["author"] . " | " . $BookArray[$id]["releaseDate"]; ?></p>
+                    <h2><?php echo $book["name"]; ?></h2>
+                    <p><?php echo $book["author"] . " | " . $book["releaseDate"]; ?></p>
                     <p><?php echo mb_substr($book["description"], 0, 90, 'utf-8')."..."; ?></p>
                     <p><?php echo $book["unitPrice"] . "원"; ?></p>
+                    <p><a class="btn btn-outline-secondary" href="./book.php?id=<?php echo $id; ?>" type="button">상세보기 &raquo;</a></p>
                 </div>
             </div>
         <?php

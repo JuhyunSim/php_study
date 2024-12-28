@@ -22,11 +22,21 @@
     $BookArray["ISBN1236"]["description"] = "스프링 프레임워크의 전체적인 구조와 핵심 이론을 다양한 예제 프로젝트를 통해 배울 수 있습니다. 전자 도서관 시스템의 여러 기능을 구현하며 스프링 MVC의 심화 개념과 실무 기술도 익힐 수 있습니다.";
     $BookArray["ISBN1236"]["category"] = "IT모바일";
     $BookArray["ISBN1236"]["unitInStock"] = 1000;
-    $BookArray["ISBN1236"]["releaseDate"] = "2023/07/010";
+    $BookArray["ISBN1236"]["releaseDate"] = "2023/07/10";
     $BookArray["ISBN1236"]["condition"] = "N";
     
     function getAllBooks() {
         global $BookArray;
         return $BookArray;
+    }
+
+    function getBookById($id) {
+        global $BookArray, $bookById;
+        
+        if(array_key_exists($id, $BookArray)){
+            $bookById = $BookArray[$id];
+            return $bookById;
+        }
+        return null;
     }
 ?>
