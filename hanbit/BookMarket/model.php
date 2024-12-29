@@ -39,4 +39,16 @@
         }
         return null;
     }
+
+    function addBook($bookId, $nBook) {
+        global $BookArray;
+        $BookArray[$bookId]["name"] = $nBook["name"];
+        $BookArray[$bookId]["unitPrice"] = $nBook["unitPrice"];
+        $BookArray[$bookId]["author"] = $nBook["author"];
+        $BookArray[$bookId]["description"] = $nBook["description"];
+        $BookArray[$bookId]["category"] = $nBook["category"];
+        $BookArray[$bookId]["unitInStock"] = $nBook["unitInStock"];
+        $BookArray[$bookId]["releaseDate"] = $nBook["releaseDate"];
+        $BookArray[$bookId]["condition"] = $nBook["condition"];
+    }
 ?>
