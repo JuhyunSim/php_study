@@ -4,6 +4,9 @@
     </head>
     <body>
         <?php
+        echo "현재 디렉토리 : " . getcwd() . "<br>";
+        echo 'PHP 실행 사용자: ' . get_current_user() . "<br>";
+
         $file = "gugudan.txt";
 
         $handle = fopen($file, "w");
