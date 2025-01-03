@@ -26,10 +26,10 @@
 
                 $original_filename = $filename;
                 if(in_array($filetype, $allowed)) {
-                    if(file_exists("c:/upload/" . $filename)){
+                    if(file_exists("/Applications/XAMPP/xamppfiles/temp/"" . $filename)){
                         $filename = time().$filename;
                     }
-                    move_uploaded_file($_FILES["photo"]["tmp_name"], "c:/upload/" . $filename);
+                    move_uploaded_file($_FILES["photo"]["tmp_name"], "/Applications/XAMPP/xamppfiles/temp/" . $filename);
                     
                     echo "이름: " . $_POST['name']."<br>";
                     echo "제목: " . $_POST['subject']."<br>";
