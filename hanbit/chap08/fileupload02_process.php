@@ -4,7 +4,7 @@
     </head>
     <body>
         <?php
-        if($_SERVER["REQUEST_METHOD"] == "post") {
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
             $name1 = $_POST["name1"];
             $title1 = $_POST["title1"];
 
@@ -24,13 +24,13 @@
                 $filename1 = time().$filename1;
             }
 
-            $target_path1 = "/Applications/XAMPP/xamppfiles/temp/" . basename($filename2);
+            $target_path2 = "/Applications/XAMPP/xamppfiles/temp/" . basename($filename2);
             
             if(file_exists("/Applications/XAMPP/xamppfiles/temp/" . $filename2)) {
                 $filename2 = time().$filename2;
             }
 
-            $target_path1 = "/Applications/XAMPP/xamppfiles/temp/" . basename($filename3);
+            $target_path3 = "/Applications/XAMPP/xamppfiles/temp/" . basename($filename3);
             
             if(file_exists("/Applications/XAMPP/xamppfiles/temp/" . $filename3)) {
                 $filename3 = time().$filename3;
@@ -38,9 +38,10 @@
 
             if(!move_uploaded_file($_FILES['photo1']['tmp_name'], $target_path1) ||
             !move_uploaded_file($_FILES['photo2']['tmp_name'], $target_path2) ||
-            !move_uploaded_file($_FILES['photo3']['tmp_name'], $target_path2)) {
+            !move_uploaded_file($_FILES['photo3']['tmp_name'], $target_path3)) {
                 return;
             }
+            
         }
         ?>
 

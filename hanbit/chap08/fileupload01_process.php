@@ -26,7 +26,7 @@
 
                 $original_filename = $filename;
                 if(in_array($filetype, $allowed)) {
-                    if(file_exists("/Applications/XAMPP/xamppfiles/temp/"" . $filename)){
+                    if(file_exists("c:/upload/" . $filename)){
                         $filename = time().$filename;
                     }
                     move_uploaded_file($_FILES["photo"]["tmp_name"], "/Applications/XAMPP/xamppfiles/temp/" . $filename);
