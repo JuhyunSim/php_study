@@ -67,7 +67,7 @@
                             <div class="mb-3 row">
                             <label class="col-sm-2">재고수</label>
                                 <div class=col-sm-3>
-                                    <input name="unitInStock" id="unitsInStock" type="text" class="form-control">
+                                    <input name="unitsInStock" id="unitsInStock" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -92,7 +92,8 @@
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="button" value="등록" class="btn btn-primary" onClick="CheckAddBook()">
+                                    <input type="submit" value="등록" class="btn btn-primary">
+                                    <input type="reset" name="reset" value="취소" class="btn btn-secondary">
                                 </div>
                             </div>
                         </form>

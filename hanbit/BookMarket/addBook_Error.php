@@ -2,8 +2,8 @@
 <html class="h-100">
     <head>
         <title>도서 등록</title>
-        <link href="./resources/css/bootstrap.min.css">
-        <style type="text/javascript">
+        <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
             .error { color: red; }
             .required { color: red; }
             .success { color: green; }
@@ -33,16 +33,16 @@
                                     <input name="bookId" id="bookId" type="text" class="form-control" value="<?= $bookId ?>">
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="error"><?= echo $bookIdErr; ?></span>
+                                    <span class="error"><?= $bookIdErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                             <label class="col-sm-2">도서명<sup class="required">*</sup></label>
                                 <div class=col-sm-3>
-                                    <input name="bookName" id="name" type="text" class="form-control" value="<?= $name?>">
+                                    <input name="bookName" id="name" type="text" class="form-control" value="<?= $bookName?>">
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="error"><?= echo $nameErr; ?></span>
+                                    <span class="error"><?= $nameErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -51,7 +51,7 @@
                                     <input name="unitPrice"id="unitPrice" type="text" class="form-control" id="unitPrice" value="<?= $unitPrice?>">
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="error"><?= echo $unitPRiceErr; ?></span>
+                                    <span class="error"><?= $unitPriceErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -68,28 +68,28 @@
                                     type="text"
                                     cols=50 rows=2 
                                     class="form-control" 
-                                    placeholder="100자 이상 적어주세요">
-                                    value="<?= $description ?>"
-                                    <?php echo $description?>
+                                    placeholder="100자 이상 적어주세요"
+                                    >
+                                    <?= htmlspecialchars($description); ?>
                                     </textarea>
-                                    <div class="col-sm-6">
-                                    <span class="error"><?= echo $descriptionErr; ?></span>
-                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="error"><?= $descriptionErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                             <label class="col-sm-2">분류</label>
                                 <div class=col-sm-3>
-                                    <input name="category" type="text" class="form-control">
+                                    <input name="category" type="text" class="form-control" value="<?= $category ?>">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                             <label class="col-sm-2">재고수<sup class="required">*</sup></label>
                                 <div class=col-sm-3>
-                                    <input name="unitInStock" id="unitsInStock" type="text" class="form-control" value="<?= $unitsInStock ?>">
+                                    <input name="unitsInStock" id="unitsInStock" type="text" class="form-control" value="<?= $unitsInStock ?>">
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="error"><?= echo $unitsInStockErr; ?></span>
+                                    <span class="error"><?= $stockErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -109,15 +109,16 @@
                             <div class="mb-3 row"> 
                                 <label class="col-sm-2">이미지<sup class="required">*</sup></label>
                                 <div class="col-sm-5">
-                                    <input type="file" name="bookImage" id="bookImage" class="form-control" value="<?= $bookImage?>">
+                                    <input type="file" name="bookImage" id="bookImage" class="form-control">
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="error"><?= echo $bookImageErr; ?></span>
+                                    <span class="error"><?= $bookImageErr; ?></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="button" value="등록" class="btn btn-primary" onClick="CheckAddBook()">
+                                    <input type="submit" value="등록" class="btn btn-primary">
+                                    <input type="submit" value="취소" class="btn btn-secondary">
                                 </div>
                             </div>
                         </form>
