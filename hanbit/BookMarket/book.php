@@ -8,6 +8,15 @@
         <?php
         require_once("./model.php");
         require_once("./menu.php");
+
+        try {
+            $id = $_GET["id"];
+
+            $book = getBookById[$id];
+            if(!$book) {
+                throw new Exception;
+            }
+        }
         ?>
         <br>
         <main>
@@ -47,6 +56,9 @@
         </div>
         </main>
         <?php 
+        catch (Exception $e) {
+            require "./exceptionNoBookId.php";
+        }
         require_once "./footer.php";
         ?>
     </body>
