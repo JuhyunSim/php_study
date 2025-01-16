@@ -3,6 +3,15 @@
     <head>
         <title>도서 정보</title>
         <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript">
+            function addToCart() {
+                if (confirm("도서를 장바구니에 추가하시겠습니까?")) {
+                    document.addForm.submit();
+                } else {
+                    document.addForm.reset();
+                }
+            }
+        </script>
     </head>
     <body class="d-flex flex-column h-100">
         <?php
@@ -44,6 +53,11 @@
                         <p><b>분류 : </b><?php echo $book["category"]?></p>
                         <p><b>재고수 : </b><?php echo $book["unitInStock"]?></p>
                         <p><?php echo $book["unitPrice"] ?>원</p>
+                        <p><form name="addForm" action="./addCart.php?id=<?php echo $id;?>" method="post">
+                            <a href="#" class="btn btn-info">도서주문 &raquo;</a>
+                            <a href="./cart.php" class="btn btn-warning">장바구니 &raquo;</a>
+                            <a href="./books.php" class="btn btn-secondary">도서목록 &raquo;</a>
+                        </form>
                         <a href=# class="btn btn-info" type="button">
                             도서주문 &raquo;
                         </a>
