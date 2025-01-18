@@ -11,7 +11,7 @@
         $BookArray[$id]['author'] = trim($array[3]);
         $BookArray[$id]['description'] = trim($array[4]);
         $BookArray[$id]['category'] = trim($array[5]);
-        $BookArray[$id]['unitsInStock'] = trim($array[6]);
+        $BookArray[$id]['unitInStock'] = trim($array[6]);
         $BookArray[$id]['releaseDate'] = trim($array[7]);
         $BookArray[$id]['condition'] = trim($array[8]);
         $BookArray[$id]['filename'] = trim($array[9]);

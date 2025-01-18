@@ -17,15 +17,6 @@
         <?php
         require_once("./model.php");
         require_once("./menu.php");
-
-        try {
-            $id = $_GET["id"];
-
-            $book = getBookById[$id];
-            if(!$book) {
-                throw new Exception;
-            }
-        }
         ?>
         <br>
         <main>
@@ -37,8 +28,13 @@
                 </div>
             </div>
             <?php
+            try {
                 $id = $_GET["id"];
+
                 $book = getBookById($id);
+                if(!$book) {
+                    throw new Exception;
+                }
             ?>
             <div class="row align-items-md-stretch">
                 <div class="col-md-5">
@@ -52,25 +48,19 @@
                         <p><b>출판일 : </b><?php echo $book["releaseDate"]?></p>
                         <p><b>분류 : </b><?php echo $book["category"]?></p>
                         <p><b>재고수 : </b><?php echo $book["unitInStock"]?></p>
-                        <p><?php echo $book["unitPrice"] ?>원</p>
+                        <p><b>가격 : </b><?php echo $book["unitPrice"] ?>원</p>
                         <p><form name="addForm" action="./addCart.php?id=<?php echo $id;?>" method="post">
-                            <a href="#" class="btn btn-info">도서주문 &raquo;</a>
+                            <a href="#" class="btn btn-info" onClick="addToCart()">도서주문 &raquo;</a>
+                            </form>
                             <a href="./cart.php" class="btn btn-warning">장바구니 &raquo;</a>
                             <a href="./books.php" class="btn btn-secondary">도서목록 &raquo;</a>
-                        </form>
-                        <a href=# class="btn btn-info" type="button">
-                            도서주문 &raquo;
-                        </a>
-                        <a href="./books.php" class="btn btn-secondary" type="button">
-                            도서목록 &raquo;
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
         </main>
         <?php 
-        catch (Exception $e) {
+        } catch (Exception $e) {
             require "./exceptionNoBookId.php";
         }
         require_once "./footer.php";
