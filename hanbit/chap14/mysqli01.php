@@ -6,10 +6,10 @@
         <?php
         $servername = "localhost";
         $username = "admin";
-        $password = "";
+        $password = "admin1234!";
         $dbname = "exercisedb";
 
-        $conn = mysqli_connect($servername, $password, $username, $dbname);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
 
         if (!$conn) {
             die("데이터베이스 연결 실패: " . mysqli_connect_error());
