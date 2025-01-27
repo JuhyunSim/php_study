@@ -6,12 +6,12 @@
         <?php
         $servername = 'localhost';
         $username = 'admin';
-        $password = 'admin1234';
+        $password = 'admin1234!';
         $dbname = 'phpbooddb';
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        if ($conn) {
+        if (!$conn) {
             die('데이터베이스 연결 실패 : ' . mysqli_connect_error());
         } 
         echo '데이터베이스 연결 성공: ' .mysqli_get_host_info($conn);
