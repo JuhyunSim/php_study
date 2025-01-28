@@ -86,7 +86,7 @@
                             <div class="mb-3 row">
                             <label class="col-sm-2">재고수<sup class="required">*</sup></label>
                                 <div class=col-sm-3>
-                                    <input name="unitsInStock" id="unitsInStock" type="text" class="form-control" value="<?= $unitsInStock ?>">
+                                    <input name="unitsInStock" id="unitsInStock" type="text" class="form-control" value="<?= $unitInStock ?>">
                                 </div>
                                 <div class="col-sm-6">
                                     <span class="error"><?= $stockErr; ?></span>

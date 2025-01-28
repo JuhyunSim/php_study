@@ -55,7 +55,7 @@ function filterDescription($field){
     }
 }
 
-$bookIdErr = $nameErr = $priceErr = $priceFloatErr = $stockErr = $descriptionErr = $bookImageErr = "";
+$bookIdErr = $nameErr = $priceErr = $priceFloatErr = $stockErr = $descriptionErr = $bookImageErr = $unitPriceErr = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $bookId = $_POST["bookId"];
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $author = $_POST["author"];
     $description = $_POST["description"];
     $category= $_POST["category"];
-    $unitsInStock = $_POST["unitsInStock"];
+    $unitInStock = $_POST["unitsInStock"];
     $releaseDate = $_POST["releaseDate"];
     $condition = $_POST["condition"];
     $filename = $_FILES['bookImage']['name'];
@@ -90,17 +90,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         if(filterPrice($unitPrice) == FALSE) {
             $unitPriceErr = "가격은 숫자만 입력하세요";
-        } else if(filterPrice($unitPRice) < 0){
+        } else if(filterPrice($unitPrice) < 0){
             $unitPriceErr = "가격은 양수만 입력하세요";
         } else if(filterPriceFloat($unitPrice) == FALSE) {
             $unitPriceErr = "소수점 둘째 자리까지만 입력하세요";
         }
     }
 
-    if(empty($unitsInStock)) {
+    if(empty($unitInStock)) {
         $stockErr = "재고수를 입력하세요";
     } else {
-        if(filterStock($unitsInStock) == FALSE) {
+        if(filterStock($unitInStock) == FALSE) {
             $stockErr = "숫자만 입력하세요";
         }
     }
@@ -141,8 +141,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO book (
                     b_id, b_name, b_unitPrice, b_author, b_description, 
                     b_category, b_unitInStock, b_releaseDate, b_condition, b_fileName)
-                    VALUES($bookId, $name, $unitPrice, $author, $description,
-                    $category, $unitInStock, $releaseDate, $condition, $filename)";
+                    VALUES('$bookId', '$bookName', '$unitPrice', '$author', '$description',
+                    '$category', '$unitInStock', '$releaseDate', '$condition', '$filename')";
                 
                 if ($conn->query($sql)) {
                     Header("Location:books.php");
