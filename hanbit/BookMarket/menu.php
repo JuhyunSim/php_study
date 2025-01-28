@@ -22,6 +22,12 @@
                             <a class="nav-link active" aria-current="page" href="./addBook.php">도서 등록</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./editBooks.php?edit=update">도서 수정</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./editBooks.php?edit=delete">도서 삭제</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./cart.php?">장바구니</a>
                         </li>
                     </ul>

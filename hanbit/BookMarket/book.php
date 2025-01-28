@@ -15,7 +15,8 @@
     </head>
     <body class="d-flex flex-column h-100">
         <?php
-        require_once("./model.php");
+        // require_once("./model.php");
+        require_once("./dbconn.php");
         require_once("./menu.php");
         ?>
         <br>
@@ -31,24 +32,27 @@
             try {
                 $id = $_GET["id"];
 
-                $book = getBookById($id);
-                if(!$book) {
-                    throw new Exception;
+                $sql = "SELECT * FROM book where b_id = '$id'";
+
+                $result = $conn->query($sql);
+                if ($result->num_rows <= 0) {
+                    throw new Exception();
                 }
+                $row = $result->fetch_array();
             ?>
             <div class="row align-items-md-stretch">
                 <div class="col-md-5">
-                    <img src="./resources/images/<?php echo $book['filename']; ?>" style = "width: 70%">
+                    <img src="./resources/images/<?php echo $row['b_fileName']; ?>" style = "width: 70%">
                     </div>
                     <div class="col-md-6">
-                        <h2><?php echo $book["name"]; ?></h2>
-                        <p><?php echo $book["description"]; ?></p>
+                        <h2><?php echo $row["b_name"]; ?></h2>
+                        <p><?php echo $row["b_description"]; ?></p>
                         <p><b>도서코드 : </b><span class="badge text-bg-danger"><?php echo $id ?></span></p>
-                        <p><b>저자 : </b><?php echo $book["author"]?></p>
-                        <p><b>출판일 : </b><?php echo $book["releaseDate"]?></p>
-                        <p><b>분류 : </b><?php echo $book["category"]?></p>
-                        <p><b>재고수 : </b><?php echo $book["unitInStock"]?></p>
-                        <p><b>가격 : </b><?php echo $book["unitPrice"] ?>원</p>
+                        <p><b>저자 : </b><?php echo $row["b_author"]?></p>
+                        <p><b>출판일 : </b><?php echo $row["b_releaseDate"]?></p>
+                        <p><b>분류 : </b><?php echo $row["b_category"]?></p>
+                        <p><b>재고수 : </b><?php echo $row["b_unitInStock"]?></p>
+                        <p><b>가격 : </b><?php echo $row["b_unitPrice"] ?>원</p>
                         <p><form name="addForm" action="./addCart.php?id=<?php echo $id;?>" method="post">
                             <a href="#" class="btn btn-info" onClick="addToCart()">도서주문 &raquo;</a>
                             </form>
@@ -60,6 +64,8 @@
         </div>
         </main>
         <?php 
+        $result->free_result();
+        $conn->close();
         } catch (Exception $e) {
             require "./exceptionNoBookId.php";
         }

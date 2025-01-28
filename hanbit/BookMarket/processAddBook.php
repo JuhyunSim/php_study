@@ -136,17 +136,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             
             if(move_uploaded_file($_FILES['bookImage']['tmp_name'], $target_path . $filename)) {
+                require "./dbconn.php";
 
-                $handle = fopen("domain.dat", "a");
-                $book_info = "$bookId | $bookName | $unitPrice | $author | $description | $category | $unitsInStock | $releaseDate | $condition | $filename";
-                fwrite($handle, "\n".$book_info);
-                fclose($handle);
-
-                if ($_FILES['bookImage']['error']) {
-                    die( $_FILES['bookImage']['error']);
+                $sql = "INSERT INTO book (
+                    b_id, b_name, b_unitPrice, b_author, b_description, 
+                    b_category, b_unitInStock, b_releaseDate, b_condition, b_fileName)
+                    VALUES($bookId, $name, $unitPrice, $author, $description,
+                    $category, $unitInStock, $releaseDate, $condition, $filename)";
+                
+                if ($conn->query($sql)) {
+                    Header("Location:books.php");
                 }
-
-                header("Location:books.php");
+                
             } else {
                 echo "파일이 업로드되지 않았습니다. 다시 시도해주세요!";
             }
